@@ -19,6 +19,8 @@
 
 template< class SignatureType, class DataObjectType >
 Wavelets<SignatureType, DataObjectType>::Wavelets(u_int16_t levels, u_int16_t vectorComposition) {
+    multiSquare = NULL;
+    
     setLevels(levels);
     setVectorComposition(vectorComposition);
 
