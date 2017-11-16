@@ -237,7 +237,7 @@ class stResultPair{
       /**
       * This method returns the object.
       */
-      const tObject * GetObject(){
+      tObject * GetObject() const{
          return Object;
       }//end GetObject
 
@@ -361,7 +361,7 @@ class stResultTriple: public stResultPair < ObjectType > {
       /**
       * This method returns the object.
       */
-      const tObject * GetJoinedObject(){
+      tObject * GetJoinedObject() const{
          return JoinedObject;
       }//end GetObject
 
