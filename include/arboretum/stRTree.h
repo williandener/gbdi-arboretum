@@ -26,7 +26,7 @@
 #include <arboretum/stGenericPriorityQueue.h>
 #include <arboretum/stResult.h>
 #include <arboretum/stRNode.h>
-#include <arboretum/deprecated/stBasicMetricEvaluators.h>
+// #include <arboretum/deprecated/stBasicMetricEvaluators.h>
 
 // this is used to set the initial size of the dynamic queue
 #ifndef STARTVALUEQUEUE
