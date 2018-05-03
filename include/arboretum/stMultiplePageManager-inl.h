@@ -14,10 +14,8 @@
 */
 #include <arboretum/stMultiplePageManager.h>
 
-typedef stMultiplePageManager<PageManager> MultiplePageManager;
-
 template <class PageManager>
-MultiplePageManager::stMultiplePageManager(const string &fileName,
+stMultiplePageManager<PageManager>::stMultiplePageManager(const string &fileName,
                                            u_int32_t pagesPerPM,
                                            u_int32_t pageSize) {
     string tempFileName;
@@ -33,10 +31,10 @@ MultiplePageManager::stMultiplePageManager(const string &fileName,
 }
 
 template <class PageManager>
-MultiplePageManager::stMultiplePageManager(const string &fileName,
+stMultiplePageManager<PageManager>::stMultiplePageManager(const std::string &fileName,
                                            u_int32_t pagesPerPM) {
     int i;
-    string tempFileName;
+    std::string tempFileName;
 
     this->fileName = fileName;
     this->pagesPerPM = pagesPerPM;
@@ -66,21 +64,21 @@ MultiplePageManager::stMultiplePageManager(const string &fileName,
 }
 
 template <class PageManager>
-MultiplePageManager::~stMultiplePageManager() {
+stMultiplePageManager<PageManager>::~stMultiplePageManager() {
     for (u_int32_t i = 0; i < this->PMs.size(); ++i) {
         delete this->PMs.at(i);
     }
 }
 
 template <class PageManager>
-bool MultiplePageManager::IsEmpty() {
+bool stMultiplePageManager<PageManager>::IsEmpty() {
     // Only the position 0 is checked.
     // If the first PM is empty, then the others are expected to be empty as well.
     return this->PMs.at(0)->IsEmpty();
 }
 
 template <class PageManager>
-stPage* MultiplePageManager::GetHeaderPage() {
+stPage* stMultiplePageManager<PageManager>::GetHeaderPage() {
     UpdateReadCounter();
 
     // The header is stored only in the first PM.
@@ -89,7 +87,7 @@ stPage* MultiplePageManager::GetHeaderPage() {
 }
 
 template <class PageManager>
-stPage* MultiplePageManager::GetPage(u_int32_t pageID) {
+stPage* stMultiplePageManager<PageManager>::GetPage(u_int32_t pageID) {
     u_int32_t pmID;
     u_int32_t actualPageID;
     stPage *page;
@@ -109,7 +107,7 @@ stPage* MultiplePageManager::GetPage(u_int32_t pageID) {
 }
 
 template <class PageManager>
-void MultiplePageManager::ReleasePage(stPage *page) {
+void stMultiplePageManager<PageManager>::ReleasePage(stPage *page) {
     u_int32_t pmID;
     u_int32_t actualPageID;
     u_int32_t formerPageID;
@@ -125,7 +123,7 @@ void MultiplePageManager::ReleasePage(stPage *page) {
 }
 
 template <class PageManager>
-stPage* MultiplePageManager::GetNewPage() {
+stPage* stMultiplePageManager<PageManager>::GetNewPage() {
     u_int32_t currentPM;
     string newFileName;
     stPage *page;
@@ -151,7 +149,7 @@ stPage* MultiplePageManager::GetNewPage() {
 }
 
 template <class PageManager>
-void MultiplePageManager::WritePage(stPage *page) {
+void stMultiplePageManager<PageManager>::WritePage(stPage *page) {
     u_int32_t pmID;
     u_int32_t actualPageID;
     u_int32_t formerPageID;
@@ -169,7 +167,7 @@ void MultiplePageManager::WritePage(stPage *page) {
 }
 
 template <class PageManager>
-void MultiplePageManager::WriteHeaderPage(stPage *headerPage) {
+void stMultiplePageManager<PageManager>::WriteHeaderPage(stPage *headerPage) {
     // The header is stored only in the first PM.
     // There is no need to store it in the other PMs.
     this->PMs.at(0)->WriteHeaderPage(headerPage);
@@ -178,7 +176,7 @@ void MultiplePageManager::WriteHeaderPage(stPage *headerPage) {
 }
 
 template <class PageManager>
-void MultiplePageManager::DisposePage(stPage *page) {
+void stMultiplePageManager<PageManager>::DisposePage(stPage *page) {
     u_int32_t pmID;
     u_int32_t actualPageID;
     u_int32_t formerPageID;
@@ -194,17 +192,17 @@ void MultiplePageManager::DisposePage(stPage *page) {
 }
 
 template <class PageManager>
-u_int32_t MultiplePageManager::GetMinimumPageSize() {
+u_int32_t stMultiplePageManager<PageManager>::GetMinimumPageSize() {
     return PMs.at(0)->GetMinimumPageSize();
 }
 
 template <class PageManager>
-u_int32_t MultiplePageManager::GetPageCount() {
+u_int32_t stMultiplePageManager<PageManager>::GetPageCount() {
     return pageCount;
 }
 
 template <class PageManager>
-void MultiplePageManager::ResetStatistics() {
+void stMultiplePageManager<PageManager>::ResetStatistics() {
     for (u_int32_t i = 0; i < this->PMs.size(); ++i) {
         this->PMs.at(i)->ResetStatistics();
     }
@@ -213,7 +211,7 @@ void MultiplePageManager::ResetStatistics() {
 }
 
 template <class PageManager>
-u_int32_t MultiplePageManager::GetCorrespondentPM(u_int32_t logicalPageID) {
+u_int32_t stMultiplePageManager<PageManager>::GetCorrespondentPM(u_int32_t logicalPageID) {
     // Header page.
     // The header is always stored in the first PM.
     if (logicalPageID == 0) {
@@ -237,7 +235,7 @@ u_int32_t MultiplePageManager::GetCorrespondentPM(u_int32_t logicalPageID) {
 }
 
 template <class PageManager>
-u_int32_t MultiplePageManager::GetActualPageID(u_int32_t logicalPageID) {
+u_int32_t stMultiplePageManager<PageManager>::GetActualPageID(u_int32_t logicalPageID) {
     // Header page.
     if (logicalPageID == 0) {
         return 0;

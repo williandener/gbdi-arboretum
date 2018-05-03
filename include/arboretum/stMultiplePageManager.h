@@ -16,7 +16,13 @@
 #define __STMULTIPLEPAGEMANAGER_H
 
 #include <arboretum/stPageManager.h>
+#include <string>
 #include <vector>
+
+using std::string;
+using std::vector;
+using std::to_string;
+using std::exception;
 
 template <class PageManager>
 class stMultiplePageManager : public stPageManager {
