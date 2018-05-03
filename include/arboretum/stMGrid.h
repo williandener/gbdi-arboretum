@@ -21,8 +21,8 @@
 //#include <arboretum/stDFNode.h>
 #include <arboretum/stPageManager.h>
 #include <arboretum/stGenericPriorityQueue.h>
-#include <arboretum/deprecated/stBasicMetricEvaluators.h>
-#include <arboretum/deprecated/stBasicObjects.h>
+// #include <arboretum/deprecated/stBasicMetricEvaluators.h>
+// #include <arboretum/deprecated/stBasicObjects.h>
 
 // this is used to set the initial size of the dynamic queue
 #define STARTVALUEQUEUE 200

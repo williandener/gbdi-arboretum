@@ -801,7 +801,7 @@ public:
      * @see GetSerializedObjectSizeAt()
      */
 //    u_int32_t Insert(KeyType key, u_int32_t serializedObjectSize, const unsigned char * serializedObject);
-    unsigned int Insert(KeyType key, u_int32_t serializedObjectSize, const unsigned char * serializedObject, bool duplicationAllowed);
+    unsigned int Insert(KeyType key, u_int32_t serializedObjectSize, const unsigned char * serializedObject, bool duplicationAllowed = true);
 
 
     /**

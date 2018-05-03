@@ -276,7 +276,7 @@ stBLeafNode<KeyType, Comparator>::~stBLeafNode() {
 //------------------------------------------------------------------------------
 
 template < class KeyType, class Comparator >
-unsigned int stBLeafNode<KeyType, Comparator>::Insert(KeyType key, u_int32_t serializedObjectSize, const unsigned char * serializedObject, bool duplicationAllowed = true) {
+unsigned int stBLeafNode<KeyType, Comparator>::Insert(KeyType key, u_int32_t serializedObjectSize, const unsigned char * serializedObject, bool duplicationAllowed) {
 
     u_int32_t entrySize;
     u_int32_t idx;

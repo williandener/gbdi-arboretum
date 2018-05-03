@@ -32,7 +32,7 @@
 #include <arboretum/stObject.h>
 #include <stdexcept>
 
-#include <arboretum/deprecated/stUserLayerUtil.h>
+// #include <arboretum/deprecated/stUserLayerUtil.h>
 
 #include <algorithm>
 #include <math.h>

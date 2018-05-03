@@ -102,7 +102,16 @@ void EdgeHistogramExtractor<SignatureType, DataObjectType>::generateSignature(co
 template<class SignatureType, class DataObjectType>
 u_int16_t EdgeHistogramExtractor<SignatureType, DataObjectType>::calculateBlockSize(const u_int16_t width, const u_int16_t height) {
 
-    return static_cast<u_int16_t>(sqrt((width*height)/getNumBlocks()));
+    // return static_cast<u_int16_t>(sqrt((width*height)/getNumBlocks()));
+    
+    u_int16_t blockSize = static_cast<u_int16_t>(sqrt((width*height)/getNumBlocks()));
+    
+    if(blockSize != 0) {
+        return blockSize;
+    } else { /* in case of block with 0 pixels, readjust the image blocks */
+        setNumBlocks(width*height);
+        return 1;
+    }
 
 } //calculateBlockSzie
 
