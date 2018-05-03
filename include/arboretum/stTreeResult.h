@@ -1442,7 +1442,7 @@ public:
    */
   stTOResult() {
     // No info
-    SetQueryInfo();
+    // SetQueryInfo(); /* Gives an error to B+-Tree implementation */
     allpairs = NULL;
   }//end stResult
 
