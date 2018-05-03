@@ -6,7 +6,7 @@
 #
 CC=gcc
 AR=ar
-CFLAGS=
+CFLAGS=-m64 -fPIC
 prefix?=/usr/local
 exec-prefix?=/usr/local
 SRCPATH=../../src/arboretum
