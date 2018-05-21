@@ -724,6 +724,13 @@ stTOResult <ObjectType, KeyType> * stBPlusTree<KeyType, ObjectType, Comparator>:
                     result->AddPair(obj, nextLeafNode->GetKeyAt(idx), result->endPairs());
                     idx++;
                 }
+                
+                // if the upperbound is already found
+                if( idx == 0 || !less(upperBound, nextLeafNode->GetKeyAt(idx-1)) ) {
+                    delete nextLeafNode;
+                    PageManager->ReleasePage(nextLeafPage);
+                    break;
+                }
 
                 // Schedule visiting the next leaf node.
                 nextLeafPageID = nextLeafNode->GetNextPageID();
