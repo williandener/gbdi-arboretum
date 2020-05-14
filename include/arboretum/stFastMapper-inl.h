@@ -175,7 +175,7 @@ void stFastMapper<ObjectType, EvaluatorType>::UpdatePivotMaps(){
 //------------------------------------------------------------------------------
 template <class ObjectType, class EvaluatorType>
 double stFastMapper<ObjectType, EvaluatorType>::GetStress(
-      int n, const ObjectType ** objs, const double ** maps){
+      int n, const ObjectType ** objs, double ** maps){
    int w1;           // Counter 1
    int w2;           // Counter 2
    double imgdiff;   // Sum of distance differences

@@ -436,7 +436,7 @@ class stFastMapper{
       * @param maps The maps of these objects.
       * @todo This method requires more tests.
       */
-      double GetStress(int n, const ObjectType ** objs, const double ** maps);
+      double GetStress(int n, const ObjectType ** objs, double ** maps);
 
       /**
       * Verifies if this FastMapper is ready to use. The test consists to
